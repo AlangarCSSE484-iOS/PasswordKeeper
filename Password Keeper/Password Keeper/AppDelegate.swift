@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window = UIWindow(frame: UIScreen.main.bounds)
     
     FirebaseApp.configure()
+    
     let showLoginScreen = false
     if showLoginScreen {
       showLoginViewController();
