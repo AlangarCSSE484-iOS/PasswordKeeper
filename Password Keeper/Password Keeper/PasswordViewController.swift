@@ -17,6 +17,9 @@ class PasswordViewController: UIViewController, UITableViewDataSource, UITableVi
   let kOpenCellHeight: CGFloat = 240
   var cellHeights = [CGFloat]()
   var passwords = [Password]()
+    
+    var currentUserCollectionRef: CollectionReference!
+    
 
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
@@ -42,12 +45,28 @@ class PasswordViewController: UIViewController, UITableViewDataSource, UITableVi
                     print("You are now signed in using Anonymous auth. uid: \(user!.uid)")
                 } else {
                     print("Error with anonymous auth: \(error!.localizedDescription)")
+                    self.setupFirebaseObservers()
                 }
             }
             
         } else {
             print("You are already signed in as: \(Auth.auth().currentUser!.uid)")
+            self.setupFirebaseObservers()
         }
+    }
+    
+    func setupFirebaseObservers() {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        currentUserCollectionRef = Firestore.firestore().collection(currentUser.uid)
+        
+//        //Temporary test
+//        print ("Send a fake piece of data to learn about auth")
+//        currentUserCollectionRef.addDocument(data: ["service" : "Hardcoded service",
+//                                                    "username" : "alangavr",
+//                                                    "password" : "123456"])
+        
+        
+        
     }
 
   func setUpFab() {
