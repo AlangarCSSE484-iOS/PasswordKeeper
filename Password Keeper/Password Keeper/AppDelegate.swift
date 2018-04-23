@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,12 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
     // To give the iOS status bar light icons & text
     UIApplication.shared.statusBarStyle = .lightContent
 
     // Programatically initialize the first view controller.
     window = UIWindow(frame: UIScreen.main.bounds)
-
+    
+    FirebaseApp.configure()
     let showLoginScreen = false
     if showLoginScreen {
       showLoginViewController();
