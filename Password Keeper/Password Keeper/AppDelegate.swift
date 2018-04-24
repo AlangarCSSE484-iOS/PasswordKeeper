@@ -35,8 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func handleLogin() {
-    print("TODO: Implement sign in from the AppDelegate")
-  }
+    showPasswordViewController()
+    }
 
   @objc func handleLogout() {
     do{
@@ -59,7 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 }
 
-
+//the reason the call to appDelegate works in LoginViewController is because of this
+//see LoginCompletionCallback in LoginViewController
 extension UIViewController {
   var appDelegate : AppDelegate {
     get {
