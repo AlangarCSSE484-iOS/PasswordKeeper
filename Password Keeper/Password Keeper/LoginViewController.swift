@@ -10,6 +10,7 @@ import UIKit
 import Material
 import Firebase
 import Rosefire
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     
